@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+
+  /* Paleta de colores médica profesional (Teal/Verde azulado) */
+  --color-medical-50: #f0fdfa;
+  --color-medical-100: #ccfbf1;
+  --color-medical-500: #14b8a6;
+  --color-medical-700: #0f766e;
+  --color-medical-900: #134e4a;
+}
+
+/* Fuerza a que las sombras usen rgba estándar para evitar el error de oklab en html2canvas */
+* {
+  box-shadow: var(--tw-shadow, 0 0 #0000) !important;
+}
+
+/* Si Tailwind v4 inyecta oklch en el body o html, lo neutralizamos */
+html,
+body {
+  color-scheme: light;
+}
+
+/* Reglas cruciales para que el PDF se vea perfecto al imprimir */
+@media print {
+  @page {
+    margin: 0;
+    size: A4;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
